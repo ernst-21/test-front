@@ -4,29 +4,32 @@ import {TRIPS_LIST_KEY} from "../../constants/trip";
 import {getTrips} from "../../api/api-trip";
 import {Card} from "../Card";
 import {ITrip} from "../../interface";
+import {Box, Grid, Typography} from "@mui/material";
+import styles from './List.module.css';
 
 const CardList = () => {
     const {data: trips, error} = useQuery(TRIPS_LIST_KEY, getTrips);
 
     if (error || !trips?.length) {
         return (
-            <div className={'itinerary-container'}>
-                <h1>No trips to display</h1>
-            </div>
+            <Box className={styles.itineraryContainer}>
+                <Typography variant='h1'>No trips to display</Typography>
+            </Box>
         )
     }
 
     return (
-        <div className='itinerary-container'>
+        <Grid container spacing={4}>
             {trips?.map((t: ITrip) => (
-                <Card
-                    key={t?.id}
-                    title={t?.title}
-                    duration={t?.duration}
-                    picture={t?.picture}
-                    id={t?.id}
-                />))}
-        </div>
+                    <Card
+                        key={t?.id}
+                        title={t?.title}
+                        duration={t?.duration}
+                        picture={t?.picture}
+                        id={t?.id}
+                    />
+                ))}
+        </Grid>
     );
 };
 
