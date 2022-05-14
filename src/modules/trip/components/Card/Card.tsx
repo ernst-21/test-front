@@ -3,7 +3,7 @@ import {ITrip} from "../../interface";
 import {Box, Card, CardContent, CardMedia, Grid, Typography} from "@mui/material";
 import styles from './Card.module.css'
 
-const TripCard = ({id, picture, title, price, duration, ...data}: ITrip) => {
+const TripCard = ({id, picture, title, price, duration, highlight, ...data}: ITrip) => {
 
     return (
         <Grid
@@ -11,7 +11,7 @@ const TripCard = ({id, picture, title, price, duration, ...data}: ITrip) => {
             className={styles.card}
             xs={12}
             sm={6}
-            md={4}
+            md={highlight ? 6 : 4}
         >
             <Card
                 sx={{width: '100%'}}

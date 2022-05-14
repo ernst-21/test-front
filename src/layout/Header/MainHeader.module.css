@@ -1,0 +1,11 @@
+header {
+    background-color: var(--color-veraneos);
+    color: var(--color-paper-light);
+    display: flex;
+    align-items: center;
+    padding: 1rem 5rem;
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 2.4rem;
+    height: 5rem;
+}

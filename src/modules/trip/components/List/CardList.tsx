@@ -1,33 +1,19 @@
 import React from 'react';
-import {useQuery} from "react-query";
-import {TRIPS_LIST_KEY} from "../../constants/trip";
-import {getTrips} from "../../api/api-trip";
 import {Card} from "../Card";
 import {ITrip} from "../../interface";
-import {Box, Grid, Typography} from "@mui/material";
-import styles from './List.module.css';
+import {Grid} from "@mui/material";
 
-const CardList = () => {
-    const {data: trips, error} = useQuery(TRIPS_LIST_KEY, getTrips);
+export type Trips = {
+    data: ITrip[];
+    highlight?: boolean;
+}
 
-    if (error || !trips?.length) {
-        return (
-            <Box className={styles.itineraryContainer}>
-                <Typography variant='h1'>No trips to display</Typography>
-            </Box>
-        )
-    }
+const CardList = ({highlight=false, data}: Trips) => {
 
     return (
-        <Grid container spacing={4}>
-            {trips?.map((t: ITrip) => (
-                    <Card
-                        key={t?.id}
-                        title={t?.title}
-                        duration={t?.duration}
-                        picture={t?.picture}
-                        id={t?.id}
-                    />
+        <Grid container spacing={highlight ? 6 : 4} >
+            {data?.map((t: ITrip) => (
+                    <Card key={t?.id} {...t}  />
                 ))}
         </Grid>
     );
