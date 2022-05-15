@@ -16,7 +16,7 @@ const FilterArea = ({data, searchData, setTrips}: Trips) => {
             }}
                  className={styles.filterContainer}
             >
-                <SearchBar data={searchData} setTrips={setTrips} />
+                <SearchBar trips={searchData} setTrips={setTrips} />
                 <RadioFilter data={data} setTrips={setTrips} />
             </Box>
         </SearchTextFilterProvider>

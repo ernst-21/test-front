@@ -1,7 +1,7 @@
 import {createContext, Dispatch, SetStateAction, useState} from 'react';
 
 type SearchTextContext = {
-    searchText?: string | undefined;
+    searchText?: string | '';
     setSearchText: Dispatch<SetStateAction<string>>;
 }
 

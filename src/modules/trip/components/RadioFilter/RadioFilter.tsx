@@ -9,13 +9,12 @@ import styles from './RadioFilter.module.css';
 import {Trips} from "../List/CardList";
 import {ITrip} from "../../interface";
 import {SearchTextFilterContext} from "../../context/SearchContext";
-import {useSearchTrips} from "../../hooks/useSearchTrips";
 
-const RadioFilter = ({data, setTrips, ...props}: Trips) => {
-    const {searchData} = useSearchTrips(props);
+const RadioFilter = ({data, setTrips}: Trips) => {
     //@ts-ignore
     const {searchText} = useContext(SearchTextFilterContext);
     const [value, setValue] = React.useState('all');
+
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         //@ts-ignore
@@ -30,10 +29,11 @@ const RadioFilter = ({data, setTrips, ...props}: Trips) => {
         }
 
         if (value === 'all' && !searchText?.length) {
-            match = data?.filter((trip: ITrip) => trip);
+            match = data;
         }
         if (value === 'all' && searchText?.length) {
-            searchData(searchText);
+            //@ts-ignore
+            match = data?.find((trip: ITrip) => trip?.title?.toLocaleLowerCase().includes(searchText));
         }
         if (value === 'group' || value === 'combined') {
             match = data?.filter((trip: ITrip) => trip?.tag === value)
@@ -41,7 +41,7 @@ const RadioFilter = ({data, setTrips, ...props}: Trips) => {
 
         //@ts-ignore
         setTrips(match);
-    }, [value])
+    }, [value, data])
 
     useEffect(() => {
         setTripResults();
