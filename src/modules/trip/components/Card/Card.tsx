@@ -1,7 +1,7 @@
 import React, {memo} from "react";
 import {ITrip} from "../../interface";
 import {Card, CardActions, CardContent, CardMedia, Grid, Typography} from "@mui/material";
-import {CardChip} from "./components";
+import {CardChip, SkeletonCard} from "./components";
 import styles from './Card.module.css'
 
 const TripCard = ({
@@ -63,4 +63,10 @@ const TripCard = ({
     )
 };
 
-export default memo(TripCard);
+const Loading = ({isLoading, highlight, ...props}: ITrip & { isLoading: boolean }) => {
+    if (!isLoading) return <TripCard highlight={highlight} {...props} />;
+
+    return <SkeletonCard highlight={highlight} {...props}/>;
+};
+
+export default memo(Loading);

@@ -9,15 +9,22 @@ import {getTrips} from "./modules/trip/api/api-trip";
 import {Typography} from "@mui/material";
 import {OtherTrips} from "./modules/trip/components/OtherTrips";
 import {FilterArea} from "./modules/trip/components/FilterArea";
+import {LoadingSkeleton} from "./modules/trip/components/LoadingSkeleton";
 
 function App() {
     const [trips, setTrips] = useState([]);
-    const {data, error} = useQuery(TRIPS_LIST_KEY, getTrips, {
-        onSuccess: data => setTrips(data),
+    const {data, isLoading, error} = useQuery(TRIPS_LIST_KEY, getTrips, {
+        onSuccess: newData => setTrips(newData),
         refetchOnWindowFocus: false
     });
 
-    if (error || !trips?.length) {
+    if (isLoading) {
+        return (
+            <LoadingSkeleton />
+        )
+    }
+
+    if (error || !data?.length) {
         return (
             <div className='App'>
                 <MainHeader />
@@ -34,8 +41,8 @@ function App() {
         <MainHeader />
         <MainLayout>
             <FilterArea data={data} searchData={trips} setTrips={setTrips} />
-            <Highlights data={trips} />
-            <OtherTrips data={trips} />
+            <Highlights isLoading={isLoading} data={trips} />
+            <OtherTrips isLoading={isLoading} data={trips} />
         </MainLayout>
     </div>
   );

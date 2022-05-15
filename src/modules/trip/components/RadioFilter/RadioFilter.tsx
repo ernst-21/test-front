@@ -25,10 +25,12 @@ const RadioFilter = ({data, setTrips}: Trips) => {
         let match: ITrip[] = [];
 
         if (value === 'none') {
+            //@ts-ignore
            match = data?.filter((trip: ITrip) => trip?.tag !== 'group' && trip?.tag !== 'combined')
         }
 
         if (value === 'all' && !searchText?.length) {
+        //@ts-ignore
             match = data;
         }
         if (value === 'all' && searchText?.length) {
@@ -36,6 +38,7 @@ const RadioFilter = ({data, setTrips}: Trips) => {
             match = data?.find((trip: ITrip) => trip?.title?.toLocaleLowerCase().includes(searchText));
         }
         if (value === 'group' || value === 'combined') {
+            //@ts-ignore
             match = data?.filter((trip: ITrip) => trip?.tag === value)
         }
 

@@ -4,18 +4,19 @@ import {ITrip} from "../../interface";
 import {Grid} from "@mui/material";
 
 export type Trips = {
-    data: ITrip[];
+    data?: ITrip[];
     searchData?: ITrip[];
     highlight?: boolean;
+    isLoading?: any;
     setTrips?: Dispatch<SetStateAction<never[]>>;
 }
 
-const CardList = ({highlight=false, data}: Trips) => {
+const CardList = ({highlight=false, isLoading, data}: Trips) => {
 
     return (
         <Grid container spacing={highlight ? 6 : 4} >
             {data?.map((t: ITrip) => (
-                    <Card key={t?.id} {...t}  />
+                    <Card isLoading={isLoading} key={t?.id} {...t}  />
                 ))}
         </Grid>
     );

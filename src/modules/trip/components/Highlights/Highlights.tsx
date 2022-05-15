@@ -5,7 +5,7 @@ import {ITrip} from "../../interface";
 import {Trips} from "../List/CardList";
 import {CardList} from "../List";
 
-const Highlights = ({data}: Trips) => {
+const Highlights = ({data, isLoading}: Trips) => {
 
     const highlighted = data?.filter((t:ITrip) => t.highlight);
 
@@ -30,7 +30,7 @@ const Highlights = ({data}: Trips) => {
             </Box>
 
             <Box  className={styles.highlightsGrid}>
-                <CardList data={highlighted} highlight />
+                <CardList isLoading={isLoading} data={highlighted} highlight />
             </Box>
         </Stack>
     );
