@@ -1,22 +1,19 @@
-.card {
+.cardContainer {
+    display: flex;
     position: relative;
     --cover-z-index: 10;
+    align-items: stretch;
 }
 
-.card .title {
-    color: var(--color-ink);
-    font-size: 1.8rem;
-    font-weight: 700;
-    line-height: 2.4rem;
-}
 
-.card .header {
+
+.cardContainer .header {
     position: relative;
     width: 100%;
     padding-bottom: 62.5%;
 }
 
-.card .cover {
+.cardContainer .cover {
     position: absolute;
     top: 0;
     left: 0;
@@ -28,39 +25,46 @@
     background-position: center center;
 }
 
-.card .body {
-    height: 130px;
+.cardContainer .body {
     width: 100%;
+    flex: 2;
     padding: 24px 16px 16px 16px;
     display: flex;
+    margin-bottom: 0;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.card .title {
+.cardContainer .title {
+    display: flex;
     color: var(--color-ink);
     font-size: 1.8rem;
     font-weight: 700;
     line-height: 2.4rem;
+    align-items: center;
 }
 
-.card .detail {
+.cardContainer .detail {
+    display: flex;
+    position: relative;
     color: var(--color-ink-light);
     font-size: 1.6rem;
     font-weight: 400;
     line-height: 2.4rem;
+    align-items: center;
+    padding: 16px;
 }
 
-.card .duration {
+.cardContainer .duration {
     margin-right: 4px;
 }
 
-.card .price {
+.cardContainer .price {
     padding-left: 4px;
     border-left: 1px solid var(--color-paper-darker);
 }
 
-.card .priceValue {
+.cardContainer .priceValue {
     color: var(--color-blue);
     font-weight: bold;
 }

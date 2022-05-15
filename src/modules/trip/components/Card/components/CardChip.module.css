@@ -1,0 +1,9 @@
+.cardChip {
+    width: fit-content;
+    padding: 0 1rem !important;
+    margin-bottom: 1rem;
+}
+.cardChipIcon {
+    color: var(--color-darkaneos) !important;
+    font-size: 2rem !important;
+}

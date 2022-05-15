@@ -9,5 +9,5 @@ export interface ITrip {
     price?: number;
     duration?: number;
     highlight?: boolean;
-    tag?: "combined" | "group";
+    tag?: string | "combined" | "group" | undefined;
 }

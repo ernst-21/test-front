@@ -10,11 +10,11 @@ const Highlights = ({data}: Trips) => {
     const highlighted = data?.filter((t:ITrip) => t.highlight);
 
     return (
-        <Stack className={styles.highlightsContainer}>
+        <Stack sx={{padding: {xs: 0}}} className={styles.highlightsContainer}>
             <Typography
                 sx={{
+                    padding: '2rem 3rem',
                     textAlign: {xs: 'center', md: 'left'},
-                    marginBottom: {xs: '1rem', md: 0}
                 }}
                 className={styles.title}
                 variant='h3'
