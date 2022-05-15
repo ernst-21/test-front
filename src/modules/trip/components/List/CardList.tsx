@@ -1,11 +1,13 @@
-import React from 'react';
+import React, {Dispatch, SetStateAction} from 'react';
 import {Card} from "../Card";
 import {ITrip} from "../../interface";
 import {Grid} from "@mui/material";
 
 export type Trips = {
     data: ITrip[];
+    searchData?: ITrip[];
     highlight?: boolean;
+    setTrips?: Dispatch<SetStateAction<never[]>>;
 }
 
 const CardList = ({highlight=false, data}: Trips) => {
