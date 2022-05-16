@@ -24,7 +24,7 @@ function App() {
         )
     }
 
-    if (error || !data?.length) {
+    if (error || !data?.length || !trips.length) {
         return (
             <div className='App'>
                 <MainHeader />
